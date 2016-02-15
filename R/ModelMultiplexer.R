@@ -120,6 +120,6 @@ getLearnerModel.ModelMultiplexerModel = function(model, more.unwrap = FALSE) {
 
 #' @export
 isFailureModel.ModelMultiplexerModel = function(model) {
-  isFailureModel(model$learner.model$next.model)
+  NextMethod() || isFailureModel(model$learner.model$next.model)
 }
 
