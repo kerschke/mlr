@@ -60,7 +60,7 @@ trainLearner.surv.optimCoxBoostPenalty = function(.learner, .task, .subset, .wei
 predictLearner.surv.optimCoxBoostPenalty = function(.learner, .model, .newdata, ...) {
   info = getTrainingInfo(.model)
   .newdata = as.matrix(fixDataForLearner(.newdata, info))
-  if(.learner$predict.type == "response")
+  if (.learner$predict.type == "response")
     as.numeric(predict(.model$learner.model, newdata = .newdata, type = "lp"))
   else
     stop("Unknown predict type")
