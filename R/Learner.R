@@ -14,7 +14,7 @@ makeLearnerBaseConstructor = function(classes, id, type, package, properties, pa
     predict.type = predict.type
   )
   # FIXME: must be removed later, see PH issue #52
-  checkParamSet(par.set)
+  checkLearnerParset(par.set)
   return(learner)
 }
 

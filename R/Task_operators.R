@@ -435,3 +435,17 @@ getTaskFactorLevels = function(task) {
 getTaskWeights = function(task) {
   task$weights
 }
+
+# returns an environment, which contains the task itself (task), the number of
+# features (p), the number of observations (n), the task type (type) and in
+# case of classification tasks the number of class levels (k)
+makeEnvironmentFromTask = function(task) {
+  ee = new.env()
+  ee$task = task
+  ee$p = getTaskNFeats(task)
+  ee$n = getTaskSize(task)
+  ee$type = getTaskType(task)
+  if (ee$type == "classif")
+    ee$k = length(getTaskClassLevels(task))
+  return(ee)
+}

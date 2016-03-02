@@ -63,11 +63,11 @@
 #' }
 tuneParams = function(learner, task, resampling, measures, par.set, control, show.info = getMlrOption("show.info")) {
   learner = checkLearner(learner)
+  learner = adaptLearnerToTask(lrn = learner, task = task)
   assertClass(task, classes = "Task")
   measures = checkMeasures(measures, learner)
   assertClass(par.set, classes = "ParamSet")
   # FIXME: must be removed later, see PH issue #52
-  checkParamSet(par.set)
   assertClass(control, classes = "TuneControl")
   if (!inherits(resampling, "ResampleDesc") &&  !inherits(resampling, "ResampleInstance"))
     stop("Argument resampling must be of class ResampleDesc or ResampleInstance!")

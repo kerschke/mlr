@@ -33,6 +33,7 @@
 #' print(mod)
 train = function(learner, task, subset, weights = NULL) {
   learner = checkLearner(learner)
+  learner = adaptLearnerToTask(lrn = learner, task = task)
   assertClass(task, classes = "Task")
   if (missing(subset)) {
     subset = seq_len(getTaskSize(task))
